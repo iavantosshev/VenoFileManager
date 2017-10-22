@@ -1,0 +1,15 @@
+# begin VFM rules
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+RewriteRule ^(.*)$ - [E=BASE:%1]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule download/(.*)/h/(.*)/sh/(.*) %{ENV:BASE}/vfm-admin/vfm-downloader.php?q=$1&h=$2&sh=$3 [L]
+RewriteRule download/(.*)/h/(.*) %{ENV:BASE}/vfm-admin/vfm-downloader.php?q=$1&h=$2 [L]
+RewriteRule download/dl/(.*)/pw/(.*) %{ENV:BASE}/vfm-admin/vfm-downloader.php?dl=$1&pw=$2 [L]
+RewriteRule download/dl/(.*) %{ENV:BASE}/vfm-admin/vfm-downloader.php?dl=$1 [L]
+RewriteRule download/zip/(.*)/n/(.*) %{ENV:BASE}/vfm-admin/vfm-downloader.php?zip=$1&n=$2 [L]
+
+</IfModule>
+# end VFM rules

@@ -1,0 +1,5 @@
+# begin VFM rules
+php_flag engine off
+Order Deny,Allow
+Deny from all
+# end VFM rules
